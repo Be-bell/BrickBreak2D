@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 4db22fa2af9046c47aba4b4d7cf5a624
+  productGUID: e70101bb9b2b9714c9ddaba2c2c72fc6
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -794,11 +794,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6a44b045-15db-4bd5-a0ba-da98e5ee8f80
+  cloudProjectId: 9e354981-00cc-4c74-a302-0703421bfc08
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: BrickBreak2D
-  organizationId: whdghk1346
+  organizationId: joonham1214-gmail-com
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
