@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 4db22fa2af9046c47aba4b4d7cf5a624
+  productGUID: 2c5fa36529434b040822b53969c694e7
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: BrickBreak2D
+  productName: BlockBreak2D
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -719,14 +719,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: BrickBreak2D
+  metroPackageName: BlockBreak2D
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: BrickBreak2D
+  metroApplicationDescription: BlockBreak2D
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -794,10 +794,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6a44b045-15db-4bd5-a0ba-da98e5ee8f80
+  cloudProjectId: 8ae2872f-3630-42e9-b919-9e7e24a2f324
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BrickBreak2D
+  projectName: BlockBreak2D 2024-05-16_17-50-13
   organizationId: whdghk1346
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
