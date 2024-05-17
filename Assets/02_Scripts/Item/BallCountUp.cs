@@ -9,7 +9,7 @@ public class BallCountUp : Item
         {
             Instantiate(ball);
         }
-        Destroy(this.gameObject);
+        ItemDestroy();
     }
       
 }
