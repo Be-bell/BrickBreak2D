@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Week4.sln"
+    "dotnet.defaultSolution": "BrickBreak2D.sln"
 }
