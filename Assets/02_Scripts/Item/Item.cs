@@ -16,6 +16,8 @@ public class Item : MonoBehaviour
     {
         ItemEffect(collision.gameObject);
     }
+    
 }
+
 
 

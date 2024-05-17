@@ -12,5 +12,3 @@ public class BallDamageUp:Item
         Destroy(this.gameObject);
     }
 }
-
-
