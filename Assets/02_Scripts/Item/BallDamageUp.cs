@@ -9,8 +9,6 @@ public class BallDamageUp:Item
         Debug.Log("공의 데미지를 증가시킵니다.");
         //Ball ball = ball.GetComponent<Ball>();
         //ball.damage += ballDamage;
-        Destroy(this.gameObject);
+        ItemDestroy();
     }
 }
-
-
