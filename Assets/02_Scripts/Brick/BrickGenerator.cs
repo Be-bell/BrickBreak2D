@@ -9,12 +9,14 @@ public class BrickGenorator : MonoBehaviour, IBrickPattern //IBrickGradient
     public GameObject brickPreFab;
     public Gradient gradient;
     public Gradient customGradient; // 사용자 정의 그라데이션
+    public Brick brick;
     // Start is called before the first frame update
     public void  Awake()
     {
 
         for (int i = 0; i < size.x; i++)
         {
+            
             for (int j = 0; j < size.y; j++)
             {
                 // 체크 모양을 생성하는 조건 추가
