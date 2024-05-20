@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
- // Icollidable(gameobject ball) 상속 받기
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, Icollidable
 {
     protected virtual void ItemEffect(GameObject ball)
     {
@@ -12,10 +11,13 @@ public class Item : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    public void OnCollide(GameObject ball)
     {
-        ItemEffect(collision.gameObject);
+        ItemEffect(ball);
     }
+
 }
+
 
 
