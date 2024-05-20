@@ -42,4 +42,10 @@ public class InputController : MonoBehaviour
     {
         NotifyMoveEvent(value.Get<float>());
     }
+
+    // º¸·ù
+    public void OnStart(InputValue value)
+    {
+        NotifyStartEvent(value.isPressed);
+    }
 }
