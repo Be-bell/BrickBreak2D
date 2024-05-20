@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public interface Icollidable
+
+public class RankData
 {
-    public void OnCollide(GameObject Ball);
+    public int bestScore;
+    //public int scordRd;
 }

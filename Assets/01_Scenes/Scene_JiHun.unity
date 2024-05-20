@@ -749,7 +749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109704723792837344, guid: fce98b6787b1f0144a4aaddd7a7019e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: 2109704723792837344, guid: fce98b6787b1f0144a4aaddd7a7019e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -785,6 +785,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3102437994274858251, guid: fce98b6787b1f0144a4aaddd7a7019e1, type: 3}
       propertyPath: m_Name
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102437994274858251, guid: fce98b6787b1f0144a4aaddd7a7019e1, type: 3}
+      propertyPath: m_TagString
       value: Ball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
