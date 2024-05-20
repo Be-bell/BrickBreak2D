@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
- // Icollidable(gameobject ball) 상속 받기
 public class Item : MonoBehaviour, Icollidable
 {
     protected virtual void ItemEffect(GameObject ball)
