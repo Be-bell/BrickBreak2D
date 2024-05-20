@@ -12,12 +12,10 @@ public class Item : MonoBehaviour, Icollidable
         Destroy(this.gameObject);
     }
     
-    public void OnCollide(GameObject ball)
+    public void OnCollide(GameObject obj)
     {
-        ItemEffect(ball);
+        ItemEffect(obj);
     }
 
 }
-
-
 
