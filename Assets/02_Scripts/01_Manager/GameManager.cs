@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour
     // 이벤트 관리
     private event Action ballBreakEvent;
     private event Action blockBreakEvent;
+    private event Action<LevelData?> levelEvent;
 
     // 직렬화필드 관리
-    [SerializeField] private ObjectPool objPool;
+    [SerializeField] public ObjectPool objPool;
     [SerializeField] private string ballTag;
     // brick class 만들면 추후 기능 추가 예정
     //[SerializeField] private string brickTag;
@@ -27,11 +28,13 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-
-        BallInstantiate();
         ballBreakEvent += ballDestroy;
         blockBreakEvent += blockDestroy;
-        Time.timeScale = 1.0f;
+    }
+
+    public void setData(LevelData data)
+    {
+        blockCount = data.bricksNum;
     }
 
     private void blockDestroy()
@@ -64,6 +67,12 @@ public class GameManager : MonoBehaviour
     }
 
     /*****************************************************************************************************/
+
+    private void Start()
+    {
+        BallInstantiate();
+        Time.timeScale = 1.0f;
+    }
 
     // ball 생성 (Item 로직에서 사용가능.)
     public void BallInstantiate()
@@ -112,6 +121,11 @@ public class GameManager : MonoBehaviour
     public void NotifyBlockBreakEvent()
     {
         blockBreakEvent?.Invoke();
+    }
+
+    public void NotifyLevelEvent(LevelData? data)
+    {
+        levelEvent?.Invoke(data);
     }
 
 }
