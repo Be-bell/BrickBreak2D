@@ -12,7 +12,7 @@ public class Item : MonoBehaviour, Icollidable
     void Start()
     {
         itemSequence = DOTween.Sequence()
-        .Append(transform.DOMoveY(endY, aniSpeed));
+        .Append(transform.DOMoveY(endY, aniSpeed)).SetRelative(); ;
     }
     protected virtual void ItemEffect(GameObject ball)
     {
@@ -21,7 +21,6 @@ public class Item : MonoBehaviour, Icollidable
     protected void ItemDestroy()
     {
         itemSequence.Kill(this.transform);
-        //transform.DOKill(this.transform);
         Destroy(this.gameObject);
     }
     
