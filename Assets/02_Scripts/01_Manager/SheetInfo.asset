@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: SheetInfo
+  m_EditorClassIdentifier: Assembly-CSharp::GameInformation
+  associatedSheet: 1Jn8bpMIeaPtHx4UpdHJ36uAGWu50s9l58r6A3tcMUZw
+  associatedWorksheet: Sheet1
+  START_ROW_LENGTH: 2
+  END_ROW_LENGTH: 4
+  dataList:
+  - level: 10
+    bricksNum: 50
+    paddleSize: 5
+  - level: 11
+    bricksNum: 60
+    paddleSize: 5
+  - level: 12
+    bricksNum: 70
+    paddleSize: 4

@@ -8,7 +8,8 @@
 
 public enum GameLevel
 {
-    EASY,
+    NULL,
+    EASY = 10,
     NORMAL,
     HARD
 }
