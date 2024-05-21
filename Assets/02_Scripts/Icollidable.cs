@@ -4,4 +4,5 @@ using UnityEngine;
 public interface Icollidable
 {
     public void OnCollide(GameObject Ball);
+
 }
