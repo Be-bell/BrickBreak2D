@@ -4,12 +4,9 @@ public class BackWall : MonoBehaviour, Icollidable
 {
     [SerializeField] private GameManager gameManager;
 
-    private void Start()
+    private void OnEnable()
     {
-        if(gameManager == null)
-        {
-            gameManager = GameManager.instance;
-        }
+        gameManager = GameManager.instance;
     }
     //[SerializeField] private LayerMask ballLayer;
 

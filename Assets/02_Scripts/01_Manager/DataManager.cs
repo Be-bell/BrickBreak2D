@@ -11,6 +11,7 @@ public class DataManager : MonoBehaviour
 
     [SerializeField] private GameObject objPool;
     [SerializeField] private GameObject gameManagerObj;
+    [SerializeField] private GameObject wallObj;
     [SerializeField] private string nextSceneName;
 
     public LevelData? currentLevelData { get; private set; }
@@ -54,6 +55,7 @@ public class DataManager : MonoBehaviour
         yield return sceneOp;
         yield return new WaitUntil(objectPoolSet);
         yield return new WaitUntil(gameManagerSet);
+        yield return new WaitUntil(WallSet);
     }
 
     private bool objectPoolSet()
@@ -72,6 +74,13 @@ public class DataManager : MonoBehaviour
         gmManager.NotifyLevelEvent(currentLevelData);
         gmManager.objPool = pool;
         gmManager.nowState = GameState.GAME_START;
+        return true;
+    }
+
+    private bool WallSet()
+    {
+        GameObject wall = Instantiate(wallObj);
+        wall.name = "wall";
         return true;
     }
 

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     // 이벤트 관리
     private event Action ballBreakEvent;
-    private event Action blockBreakEvent;
+    public event Action blockBreakEvent;
     private event Action<LevelData?> levelEvent;
 
     // 직렬화필드 관리

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objPool: {fileID: 5377077694431850774, guid: 9352758605003cd408180d2075b058dd, type: 3}
   gameManagerObj: {fileID: 916933292614208232, guid: bbb317354897dd44a870fa4e7fb71f76, type: 3}
+  wallObj: {fileID: 3857468963773082645, guid: af4bd1963ea738b4b9a7d4ae9d521d3d, type: 3}
   nextSceneName: MainScene
   level: 0
   gameInfo: {fileID: 11400000, guid: c9347491457d57b49b2eda8d4b90077b, type: 2}
