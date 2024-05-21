@@ -15,13 +15,13 @@ public class SpriteSwitcher : MonoBehaviour
         spriteRenderer.sprite = normalSprite;
     }
 
-    private void OnMouseEnter()
-    {
-        spriteRenderer.sprite = hoverSprite; 
-    }
+    //private void OnMouseEnter()
+    //{
+    //    spriteRenderer.sprite = hoverSprite; 
+    //}
 
-    private void OnMouseExit()
-    {
-        spriteRenderer.sprite = normalSprite; 
-    }
+    //private void OnMouseExit()
+    //{
+    //    spriteRenderer.sprite = normalSprite; 
+    //}
 }

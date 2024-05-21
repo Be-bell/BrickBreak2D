@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    private DataManager dataManager;
+
     [System.Serializable] 
     public class Pool
     {
@@ -16,19 +19,33 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
-        foreach (var pool in pools)
-        {
-            Queue<GameObject> objPool = new Queue<GameObject>();
-            for(int i=0; i<pool.size; i++)
-            {
-                GameObject obj = Instantiate(pool.prefab);
-                obj.transform.parent = this.transform;
-                obj.SetActive(false);
-                objPool.Enqueue(obj);
-            }
+        DontDestroyOnLoad(this);
+    }
 
-            poolDictionary.Add(pool.objTag, objPool);
+    private void Start()
+    {
+        dataManager = DataManager.instance;
+        dataManager.ObjectPoolStart += MakePool;
+    }
+
+    private void MakePool(GameState state)
+    {
+        if(state == GameState.GAME_START)
+        {
+            poolDictionary = new Dictionary<string, Queue<GameObject>>();
+            foreach (var pool in pools)
+            {
+                Queue<GameObject> objPool = new Queue<GameObject>();
+                for (int i = 0; i < pool.size; i++)
+                {
+                    GameObject obj = Instantiate(pool.prefab);
+                    obj.transform.parent = this.transform;
+                    obj.SetActive(false);
+                    objPool.Enqueue(obj);
+                }
+
+                poolDictionary.Add(pool.objTag, objPool);
+            }
         }
     }
 

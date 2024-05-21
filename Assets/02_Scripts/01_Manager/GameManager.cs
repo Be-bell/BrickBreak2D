@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private DataManager dataManager;
 
     // 이벤트 관리
     private event Action ballBreakEvent;
@@ -15,11 +16,11 @@ public class GameManager : MonoBehaviour
     // 직렬화필드 관리
     [SerializeField] public ObjectPool objPool;
     [SerializeField] private string ballTag;
-    // brick class 만들면 추후 기능 추가 예정
-    //[SerializeField] private string brickTag;
+    [SerializeField] private string brickTag;
+
 
     public GameState nowState = GameState.GAME_READY;
-    private int blockCount;
+    [SerializeField] private int blockCount;
     private int ballCount;
 
     private void Awake()
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         }
         ballBreakEvent += ballDestroy;
         blockBreakEvent += blockDestroy;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void setData(LevelData data)
@@ -55,6 +57,14 @@ public class GameManager : MonoBehaviour
         // 여기서부터 UI 띄우는 거.
         Debug.Log("게임 클리어!");
         nowState = GameState.GAME_CLAER;
+        if(dataManager.level != GameLevel.HARD)
+        {
+            setData(dataManager.currentLevelData);
+        }
+        else
+        {
+            Debug.Log("게임을 모두 클리어하였습니다.");
+        }
         Time.timeScale = 0.0f;
     }
 
@@ -70,8 +80,34 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        BallInstantiate();
-        Time.timeScale = 1.0f;
+        dataManager = DataManager.instance;
+        dataManager.GameManagerStart += GameStart;
+    }
+
+    // 게임 시작
+    private void GameStart(GameState state)
+    {
+        if(state == GameState.GAME_START)
+        {
+            setData(dataManager.currentLevelData);
+            BallInstantiate();
+            Time.timeScale = 1.0f;
+            BlockSetting(dataManager.currentLevelData.bricksNum);
+        }
+    }
+
+    private void BlockSetting(int bricksNum)
+    {
+        float initX = -2.3f;
+        float initY = 4f;
+
+        for(int i=0; i<bricksNum; i++)
+        {
+            Vector3 pos = new Vector3(initX + i % 6 * 0.92f, initY - (i / 4) * 0.5f, 0f);
+            GameObject brick = objPool.SpawnFromPool(brickTag);
+            brick.transform.position = pos;
+            brick.SetActive(true);
+        }
     }
 
     // ball 생성 (Item 로직에서 사용가능.)
@@ -82,34 +118,8 @@ public class GameManager : MonoBehaviour
         ball.SetActive(true);
 
         // ball 위치 추후 수정
-        ball.transform.position = Vector3.zero;
+        ball.transform.position = new Vector3(0, -3, 0);
     }
-
-    // ball count 빼기. 조금 더 좋은 생각 있는지 확인
-    //public void SubstractBallCount()
-    //{
-    //    ballCount--;
-    //}
-
-    //private void FixedUpdate()
-    //{
-    //    // ball 개수, brick 개수 세서 GameClaer나 GameOver 구현
-    //    GameUpdate();
-    //}
-
-    //// 블록 개수 0개 이하면 GameOver
-    //private void GameUpdate()
-    //{
-    //    if (ballCount <= 0)
-    //    {
-    //        Time.timeScale = 0.0f;
-    //        Debug.Log("게임 오버");
-    //        nowState = GameState.GAME_OVER;
-    //    }
-
-    //    Debug.Log(nowState);
-
-    //}
 
     /*****************************************************************************************************/
 
@@ -128,4 +138,7 @@ public class GameManager : MonoBehaviour
         levelEvent?.Invoke(data);
     }
 
+    /*****************************************************************************************************/
+
+    
 }

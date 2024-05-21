@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/01_Scenes/Scene_JongHwa.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/01_Scenes/MainScene.unity
-    guid: 63c44ff6f3ebb3e4bb91c3502587c1ae
-  - enabled: 1
-    path: Assets/01_Scenes/ExampleScene.unity
-    guid: 2ed9783dca57e02489f6ba15bbae7fce
+    path: Assets/01_Scenes/Scene_JongHwa_1.unity
+    guid: 744c2d7e9c812ba49a8b3fd29587f2f2
   m_configObjects: {}

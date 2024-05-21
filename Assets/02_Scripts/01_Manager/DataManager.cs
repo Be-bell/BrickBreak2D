@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,13 @@ using UnityEngine.SceneManagement;
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
+    public event Action<GameState> GameManagerStart;
+    public event Action<GameState> ObjectPoolStart;
 
-    [SerializeField] private GameObject objPool;
-    [SerializeField] private GameObject gameManagerObj;
     [SerializeField] private GameObject wallObj;
     [SerializeField] private string nextSceneName;
 
-    public LevelData? currentLevelData { get; private set; }
+    public LevelData currentLevelData { get; private set; }
     public GameLevel level;
 
     [SerializeField] private GameInformation gameInfo;
@@ -39,13 +40,15 @@ public class DataManager : MonoBehaviour
         levelDataList = Instantiate(gameInfo).dataList;
         for (int i = 0; i < levelDataList.Count; i++)
         {
-            currentLevelData = levelDataList[i].level == level ? levelDataList[i] : null;
+            if (levelDataList[i].level == level)
+                currentLevelData = levelDataList[i];
         }
     }
 
     // 게임 시작 버튼, 시작 누르면 게임시작 창에서 오브젝트 생성.
-    public void GameStart()
+    public void StartGame()
     {
+        Debug.Log("실행완료");
         StartCoroutine(GameManagerSpawn());
     }
 
@@ -53,35 +56,28 @@ public class DataManager : MonoBehaviour
     {
         AsyncOperation sceneOp = SceneManager.LoadSceneAsync(nextSceneName);
         yield return sceneOp;
-        yield return new WaitUntil(objectPoolSet);
-        yield return new WaitUntil(gameManagerSet);
-        yield return new WaitUntil(WallSet);
+        yield return new WaitUntil(SettingObjectPool);
+        yield return new WaitUntil(SettingGameManager);
+        yield return new WaitUntil(SettingWalls);
     }
 
-    private bool objectPoolSet()
+    private bool SettingWalls()
     {
-        GameObject objectPool = Instantiate(objPool);
-        objectPool.name = "ObjectPool";
-        pool = objectPool.GetComponent<ObjectPool>();
-        return objectPool;
-    }
-
-    private bool gameManagerSet()
-    {
-        GameObject gameManager = Instantiate(gameManagerObj);
-        gameManager.name = "GameManager";
-        GameManager gmManager = gameManager.GetComponent<GameManager>();
-        gmManager.NotifyLevelEvent(currentLevelData);
-        gmManager.objPool = pool;
-        gmManager.nowState = GameState.GAME_START;
+        Instantiate(wallObj);
         return true;
     }
 
-    private bool WallSet()
+    private bool SettingObjectPool()
     {
-        GameObject wall = Instantiate(wallObj);
-        wall.name = "wall";
+        ObjectPoolStart.Invoke(GameState.GAME_START);
         return true;
     }
 
+    private bool SettingGameManager()
+    {
+        GameManagerStart.Invoke(GameState.GAME_START);
+        return true;
+    }
+
+    
 }
