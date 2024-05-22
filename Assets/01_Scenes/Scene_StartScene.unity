@@ -370,17 +370,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1106419503 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2145641010172960007, guid: 78d57d64c0b6e3140ad1e8ac5812c497, type: 3}
-  m_PrefabInstance: {fileID: 32871667}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c2f58e53591194a9af0b53a579c247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1165334863
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,30 +787,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 916933292614208232, guid: bbb317354897dd44a870fa4e7fb71f76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1935186612}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbb317354897dd44a870fa4e7fb71f76, type: 3}
---- !u!1 &1935186611 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 916933292614208232, guid: bbb317354897dd44a870fa4e7fb71f76, type: 3}
-  m_PrefabInstance: {fileID: 1935186610}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1935186612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935186611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25bf788d8ad90704587c8b3d5e532868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameClearPanel: {fileID: 8450195725995887043, guid: 71ce0b4fee2ee1c42bcd1f931289a0ba, type: 3}
-  GameOverPanel: {fileID: 623922926037849134, guid: 555ab21d25a64aa4cb94047fbff79391, type: 3}
 --- !u!1001 &2042998146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,8 +989,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1106419503}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+      - m_Target: {fileID: 2138396866}
+        m_TargetAssemblyTypeName: ButtonImageSwitch, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:

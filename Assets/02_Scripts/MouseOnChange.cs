@@ -5,7 +5,6 @@ public class ButtonImageSwitch : MonoBehaviour
 {
     public Sprite normalImage; 
     public Sprite hoverImage; 
-
     private Image buttonImage;
 
     private void Start()
@@ -23,5 +22,10 @@ public class ButtonImageSwitch : MonoBehaviour
     public void OnMouseExit()
     {
         buttonImage.sprite = normalImage; 
+    }
+
+    public void StartGame()
+    {
+        DataManager.instance.StartGame();
     }
 }

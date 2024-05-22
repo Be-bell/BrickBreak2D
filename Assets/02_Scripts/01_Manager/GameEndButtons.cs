@@ -9,18 +9,20 @@ public class GameEndButtons : MonoBehaviour
     public void StartScene()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(StartSceneName);
         GameManager.instance.nowState = GameState.GAME_READY;
         gameObject.SetActive(false);
         gameObject.IsDestroyed();
+        SceneManager.LoadScene(StartSceneName);
+        
     }
 
     public void Restart()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(MainSceneName);
-        GameManager.instance.nowState = GameState.GAME_START;
+        DataManager.instance.StartGame();
         gameObject.SetActive(false);
         gameObject.IsDestroyed();
+        SceneManager.LoadScene(MainSceneName);
+        
     }
 }

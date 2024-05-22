@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     
     public GameState nowState = GameState.GAME_READY;
 
-    private int blockCount;
-    private int ballCount;
+    [SerializeField] private int blockCount;
+    [SerializeField] private int ballCount;
+
+    public int Score;
 
     private void Awake()
     {
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void setData(LevelData data)
+    private void setData(LevelData data)
     {
         blockCount = data.bricksNum;
     }
@@ -47,14 +49,15 @@ public class GameManager : MonoBehaviour
     private void blockDestroy()
     {
         blockCount--;
-        if (blockCount == 0) GameClear();
+        Score += 10;
+        if (blockCount <= 0) GameClear();
     }
 
     // ball 삭제 후 따지기.
     private void ballDestroy()
     {
         ballCount--;
-        if(ballCount == 0) GameOver();
+        if(ballCount <= 0) GameOver();
     }
 
     private void GameClear()
@@ -112,7 +115,7 @@ public class GameManager : MonoBehaviour
 
         for(int i=0; i<bricksNum; i++)
         {
-            Vector3 pos = new Vector3(initX + i % 6 * 0.92f, initY - (i / 6) * 0.3f, 0f);
+            Vector3 pos = new Vector3(initX + i % 6 * 0.92f, initY - (i / 6) * 0.5f, 0f);
             GameObject brick = ObjectPool.instance.SpawnFromPool(brickTag);
             brick.SetActive(true);
 
