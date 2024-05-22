@@ -8,6 +8,7 @@ public class GameEnd : MonoBehaviour
 
     public void SceneMove(int scene)
     {
+        GameManager.instance.Score = 0;
         gameObject.SetActive(false);
         if (scene == (int) SceneNumber.MAIN_SCENE)
         {
