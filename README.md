@@ -21,13 +21,14 @@ GitHub__ <br><br>
 |김지운|팀원|UI, 블럭 구조 설계|
 |이지훈|팀원|볼, 충돌처리, 최고점수 기록|
 
+
+<br><br>
 ### :mag_right: 인게임 화면
 |타이틀 화면|메인 화면| 
 |:------:|:------:|
-|![타이틀 화면]()|![메인 화면]()|
+|![타이틀 화면](https://github.com/Be-bell/BrickBreak2D/blob/dev_EunSu/ReadmeImage/TitleScene.gif)|![메인 화면](https://github.com/Be-bell/BrickBreak2D/blob/dev_EunSu/ReadmeImage/MainScene.png)|
 
 |게임 오버|스테이지 클리어| 
 |:------:|:------:|
-|![게임 오버]()|![스테이지 클리어]()|
+|![게임 오버](https://github.com/Be-bell/BrickBreak2D/blob/dev_EunSu/ReadmeImage/GameOver.png)|![스테이지 클리어](https://github.com/Be-bell/BrickBreak2D/blob/dev_EunSu/ReadmeImage/StageClear.png)|
  
-사진 곧 넣겠습니다.
