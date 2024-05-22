@@ -1,27 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SpriteSwitcher : MonoBehaviour
+public class ButtonImageSwitch : MonoBehaviour
 {
-    public Sprite normalSprite; 
-    public Sprite hoverSprite; 
+    public Sprite normalImage; 
+    public Sprite hoverImage; 
 
-    private SpriteRenderer spriteRenderer;
+    private Image buttonImage;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = normalSprite;
+        buttonImage = GetComponent<Image>();
+        buttonImage.sprite = normalImage; 
     }
 
-    //private void OnMouseEnter()
-    //{
-    //    spriteRenderer.sprite = hoverSprite; 
-    //}
+    public void OnMouseEnter()
+    {
+        buttonImage.sprite = hoverImage;
+        Debug.Log("»£√‚");
+    }
 
-    //private void OnMouseExit()
-    //{
-    //    spriteRenderer.sprite = normalSprite; 
-    //}
+    public void OnMouseExit()
+    {
+        buttonImage.sprite = normalImage; 
+    }
 }

@@ -1,8 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brick : MonoBehaviour
+public class Brick : MonoBehaviour, Icollidable
 {
     public SpriteRenderer spriteRenderer { get; private set; }
     public Sprite[] states;
@@ -22,6 +23,7 @@ public class Brick : MonoBehaviour
             this.health = this.states.Length;
             this.spriteRenderer.sprite = this.states[this.health - 1];
         }
+        
     }
 
     private void Hit()
@@ -41,12 +43,9 @@ public class Brick : MonoBehaviour
             this.spriteRenderer.sprite = this.states[this.health - 1];
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollide(GameObject Ball)
     {
-        if (collision.gameObject.name == "Ball")
-        {
-            Hit();
-        }
+       Hit();
     }
 }
 
