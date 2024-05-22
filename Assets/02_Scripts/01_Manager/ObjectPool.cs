@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     private DataManager dataManager;
+    public static ObjectPool instance;
 
     [System.Serializable] 
     public class Pool
@@ -19,6 +20,11 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+
         DontDestroyOnLoad(this);
     }
 
