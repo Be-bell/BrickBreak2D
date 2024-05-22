@@ -30,10 +30,9 @@ public class ObjectPool : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
     }
 
-    private void Start()
+    private void OnEnable()
     {
         dataManager = DataManager.instance;
         dataManager.ObjectPoolStart += MakePool;

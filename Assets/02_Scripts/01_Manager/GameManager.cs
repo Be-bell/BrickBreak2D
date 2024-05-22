@@ -36,14 +36,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         DontDestroyOnLoad(gameObject);
-
     }
 
     private void setData(LevelData data)
     {
         blockCount = data.bricksNum;
+        ballCount = 0;
     }
 
     private void blockDestroy()
@@ -73,6 +72,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("게임을 모두 클리어하였습니다.");
         }
+        blockCount = 0;
         NotifyGameStateEvent(nowState);
         Time.timeScale = 0.0f;
     }
@@ -83,12 +83,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("게임 오버");
         nowState = GameState.GAME_OVER;
         NotifyGameStateEvent(nowState);
+        ballCount = 0;
         Time.timeScale = 0.0f;
     }
 
     /*****************************************************************************************************/
 
-    private void Start()
+    private void OnEnable()
     {
         dataManager = DataManager.instance;
         dataManager.GameManagerStart += GameStart;
@@ -99,8 +100,9 @@ public class GameManager : MonoBehaviour
     {
         if(state == GameState.GAME_START)
         {
-            setData(dataManager.currentLevelData);
             Time.timeScale = 1.0f;
+            LevelData nowData = dataManager.currentLevelData;
+            setData(nowData);
             BlockSetting(dataManager.currentLevelData.bricksNum);
             BallInstantiate();
             ballBreakEvent += ballDestroy;

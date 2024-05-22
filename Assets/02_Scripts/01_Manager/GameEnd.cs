@@ -15,13 +15,13 @@ public class GameEnd : MonoBehaviour
     {
         if(state == GameState.GAME_CLAER)
         {
+            GameObject panel = Instantiate(GameClearPanel, transform);
             GameClearPanel.SetActive(true);
-            Instantiate(GameClearPanel);
         }
         else if (state == GameState.GAME_OVER)
         {
+            GameObject panel = Instantiate(GameOverPanel, transform);
             GameOverPanel.SetActive(true);
-            Instantiate(GameOverPanel);
         }
     }
 }
