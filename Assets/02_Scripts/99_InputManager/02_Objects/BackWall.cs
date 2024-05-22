@@ -12,6 +12,6 @@ public class BackWall : MonoBehaviour, Icollidable
     public void OnCollide(GameObject ball)
     {
         ball.SetActive(false);
-        gameManager.NotifyBallBreakEvent();
+        gameManager.ballDestroy();
     }
 }

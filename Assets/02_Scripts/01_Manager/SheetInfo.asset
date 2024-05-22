@@ -18,11 +18,11 @@ MonoBehaviour:
   END_ROW_LENGTH: 4
   dataList:
   - level: 10
-    bricksNum: 50
-    paddleSize: 5
+    bricksNum: 18
+    paddleSize: 3
   - level: 11
-    bricksNum: 60
-    paddleSize: 5
+    bricksNum: 24
+    paddleSize: 2
   - level: 12
-    bricksNum: 70
-    paddleSize: 4
+    bricksNum: 54
+    paddleSize: 1

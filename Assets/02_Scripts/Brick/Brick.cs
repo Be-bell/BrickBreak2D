@@ -38,7 +38,7 @@ public class Brick : MonoBehaviour, Icollidable
 
         if (this.health <= 0)
         {
-            GameManager.instance.NotifyBlockBreakEvent();
+            GameManager.instance.blockDestroy();
             itemGenerate.ItemCreate();
             this.gameObject.SetActive(false);
         }

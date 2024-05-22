@@ -256,7 +256,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -1871110308301054699}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameEndButtons, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -1871110308301054699}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameEndButtons, Assembly-CSharp
         m_MethodName: StartScene
         m_Mode: 1
@@ -1388,7 +1388,7 @@ GameObject:
   - component: {fileID: 6284779695183794848}
   - component: {fileID: 5511040336561337887}
   - component: {fileID: 6059546113428806821}
-  - component: {fileID: -1871110308301054699}
+  - component: {fileID: 5122199504813299235}
   m_Layer: 5
   m_Name: StageClear
   m_TagString: Untagged
@@ -1490,7 +1490,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &-1871110308301054699
+--- !u!114 &5122199504813299235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1499,8 +1499,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8450195725995887043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788292c3fa425154a8b0cab612250f0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 25bf788d8ad90704587c8b3d5e532868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartSceneName: Scene_StartScene
-  MainSceneName: Scene_MainScene
+  MainScene: Scene_MainScene
+  StartScene: Scene_StartScene

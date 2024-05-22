@@ -1,27 +1,23 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEnd : MonoBehaviour
 {
+    [SerializeField] public string MainScene;
+    [SerializeField] public string StartScene;
 
-    [SerializeField] private GameObject GameClearPanel;
-    [SerializeField] private GameObject GameOverPanel;
-
-    private void Start()
+    public void SceneMove(int scene)
     {
-        GameManager.instance.gameStateEvent += gameEnd;
-    }
-
-    private void gameEnd(GameState state)
-    {
-        if(state == GameState.GAME_CLAER)
+        gameObject.SetActive(false);
+        if (scene == (int) SceneNumber.MAIN_SCENE)
         {
-            GameObject panel = Instantiate(GameClearPanel, transform);
-            GameClearPanel.SetActive(true);
+            DataManager.instance.StartGame();
+            SceneManager.LoadScene(MainScene);
         }
-        else if (state == GameState.GAME_OVER)
+        if (scene == (int) SceneNumber.START_SCENE)
         {
-            GameObject panel = Instantiate(GameOverPanel, transform);
-            GameOverPanel.SetActive(true);
+            SceneManager.LoadScene(StartScene);
         }
     }
+
 }
