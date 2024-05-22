@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> ballList;
     private List<GameObject> brickList;
 
-    public int Score;
+    public int Score { get; private set; }
 
     private void Awake()
     {
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         blockCount = data.bricksNum;
         ballCount = 0;
+        Score = dataManager.BestScore;
     }
 
     public void blockDestroy()
@@ -129,7 +130,7 @@ public class GameManager : MonoBehaviour
         brickList = new List<GameObject>();
         for(int i=0; i<bricksNum; i++)
         {
-            Vector3 pos = new Vector3(initX + i % 6 * 0.92f, initY - (i / 6) * 0.5f, 0f);
+            Vector3 pos = new Vector3(initX + i % 6 * 0.92f, initY - (i / 6) * 0.6f, 0f);
             GameObject brick = objectPool.SpawnFromPool(brickTag);
             brick.SetActive(true);
             brickList.Add(brick);

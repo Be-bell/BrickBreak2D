@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     public void Open(GameState gameState)
     {
         int nowScore = GameManager.instance.Score;
+
         if (gameState == GameState.GAME_CLAER)
         {
             stageClear.SetActive(true);
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
             if (nowScore > int.Parse(clearBestScoreText.text))
             {
                 clearBestScoreText.text = nowScore.ToString();
+                DataManager.instance.BestScore += nowScore;
             }
         }
         else if (gameState == GameState.GAME_OVER)
@@ -52,6 +54,7 @@ public class UIManager : MonoBehaviour
             {
                 endGameBestText.text = nowScore.ToString();
             }
+            DataManager.instance.BestScore = 0;
         }
     }
 

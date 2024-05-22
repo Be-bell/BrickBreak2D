@@ -26,7 +26,7 @@ public class DataManager : MonoBehaviour
 
     //현재 레벨
     public GameLevel level;
-
+    public int BestScore;
 
     private void Awake()
     {

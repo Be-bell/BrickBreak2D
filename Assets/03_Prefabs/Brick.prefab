@@ -146,10 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - {fileID: 21300000, guid: f6bb7186c90ac5c4386779a782d64cfb, type: 3}
-  - {fileID: 21300000, guid: 0c3c916b3b4c72547a05a133343ba3ff, type: 3}
-  - {fileID: 21300000, guid: 68a248afa2947d746a38e7111e0e311f, type: 3}
-  - {fileID: 21300000, guid: 3f8b60526188c4c4da85a28f3fb3cb6b, type: 3}
-  - {fileID: 21300000, guid: f5f3db40c2b5b5f4d8244a295e92fcc2, type: 3}
   unbreakable: 0
 --- !u!114 &8456865490134971012
 MonoBehaviour:
@@ -165,6 +161,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item:
   - {fileID: 8861637907921895168, guid: f99cc6e8773ebf94192a17b1997180a8, type: 3}
-  - {fileID: 485582848873253590, guid: 494f017b6423e5e4088369bfd8681249, type: 3}
   - {fileID: 5478517413285199390, guid: 4c79fa6098a2ea84693942c9305b6960, type: 3}
-  probability: 50
+  probability: 100

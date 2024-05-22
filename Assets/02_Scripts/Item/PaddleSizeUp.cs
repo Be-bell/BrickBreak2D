@@ -2,7 +2,7 @@
 
 public class PaddleSizeUp:Item
 {
-    private float size=0.5f;
+    private float size=0.1f;
   
     protected override void ItemEffect(GameObject obj)
     {
