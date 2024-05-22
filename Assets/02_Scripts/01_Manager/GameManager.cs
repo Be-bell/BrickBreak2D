@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 /// <summary>
 /// 게임 로직 구성
@@ -9,18 +10,18 @@ public class GameManager : MonoBehaviour
     private DataManager dataManager;
 
     // 이벤트 관리
-    private event Action ballBreakEvent;
+    public event Action ballBreakEvent;
     public event Action blockBreakEvent;
-    private event Action<LevelData?> levelEvent;
+    public event Action<LevelData?> levelEvent;
+    public event Action<GameState> gameStateEvent;
 
     // 직렬화필드 관리
-    [SerializeField] public ObjectPool objPool;
     [SerializeField] private string ballTag;
     [SerializeField] private string brickTag;
-
-
+    
     public GameState nowState = GameState.GAME_READY;
-    [SerializeField] private int blockCount;
+
+    private int blockCount;
     private int ballCount;
 
     private void Awake()
@@ -29,9 +30,13 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        ballBreakEvent += ballDestroy;
-        blockBreakEvent += blockDestroy;
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
+
     }
 
     public void setData(LevelData data)
@@ -59,12 +64,13 @@ public class GameManager : MonoBehaviour
         nowState = GameState.GAME_CLAER;
         if(dataManager.level != GameLevel.HARD)
         {
-            setData(dataManager.currentLevelData);
+            dataManager.level++;
         }
         else
         {
             Debug.Log("게임을 모두 클리어하였습니다.");
         }
+        NotifyGameStateEvent(nowState);
         Time.timeScale = 0.0f;
     }
 
@@ -73,6 +79,7 @@ public class GameManager : MonoBehaviour
         // 여기서부터 UI창 띄우는 거.
         Debug.Log("게임 오버");
         nowState = GameState.GAME_OVER;
+        NotifyGameStateEvent(nowState);
         Time.timeScale = 0.0f;
     }
 
@@ -90,9 +97,11 @@ public class GameManager : MonoBehaviour
         if(state == GameState.GAME_START)
         {
             setData(dataManager.currentLevelData);
-            BallInstantiate();
             Time.timeScale = 1.0f;
             BlockSetting(dataManager.currentLevelData.bricksNum);
+            BallInstantiate();
+            ballBreakEvent += ballDestroy;
+            blockBreakEvent += blockDestroy;
         }
     }
 
@@ -103,22 +112,23 @@ public class GameManager : MonoBehaviour
 
         for(int i=0; i<bricksNum; i++)
         {
-            Vector3 pos = new Vector3(initX + i % 6 * 0.92f, initY - (i / 4) * 0.5f, 0f);
-            GameObject brick = objPool.SpawnFromPool(brickTag);
-            brick.transform.position = pos;
+            Vector3 pos = new Vector3(initX + i % 6 * 0.92f, initY - (i / 6) * 0.3f, 0f);
+            GameObject brick = ObjectPool.instance.SpawnFromPool(brickTag);
             brick.SetActive(true);
+
+            brick.transform.position = pos;
         }
     }
 
     // ball 생성 (Item 로직에서 사용가능.)
     public void BallInstantiate()
     {
-        GameObject ball = objPool.SpawnFromPool(ballTag);
+        GameObject ball = ObjectPool.instance.SpawnFromPool(ballTag);
         ballCount++;
         ball.SetActive(true);
 
         // ball 위치 추후 수정
-        ball.transform.position = new Vector3(0, -3, 0);
+        ball.transform.position = new Vector3(0, -4, 0);
     }
 
     /*****************************************************************************************************/
@@ -138,7 +148,10 @@ public class GameManager : MonoBehaviour
         levelEvent?.Invoke(data);
     }
 
-    /*****************************************************************************************************/
+    private void NotifyGameStateEvent(GameState data)
+    {
+        gameStateEvent?.Invoke(data);
+    }
 
-    
+    /*****************************************************************************************************/
 }

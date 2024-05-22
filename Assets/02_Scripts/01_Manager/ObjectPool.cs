@@ -24,8 +24,13 @@ public class ObjectPool : MonoBehaviour
         {
             instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
+
     }
 
     private void Start()

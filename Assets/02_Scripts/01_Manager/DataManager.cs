@@ -20,7 +20,6 @@ public class DataManager : MonoBehaviour
 
     [SerializeField] private GameInformation gameInfo;
     private List<LevelData> levelDataList;
-    private ObjectPool pool;
     
 
     private void Awake()
@@ -29,8 +28,13 @@ public class DataManager : MonoBehaviour
         {
             instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         DontDestroyOnLoad(gameObject);
+
         level = GameLevel.EASY;
         SetLevelData();
     }
@@ -48,7 +52,6 @@ public class DataManager : MonoBehaviour
     // 게임 시작 버튼, 시작 누르면 게임시작 창에서 오브젝트 생성.
     public void StartGame()
     {
-        Debug.Log("실행완료");
         StartCoroutine(GameManagerSpawn());
     }
 

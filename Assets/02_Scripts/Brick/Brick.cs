@@ -1,3 +1,4 @@
+using DG.Tweening.Core.Easing;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class Brick : MonoBehaviour, Icollidable
 {
     public SpriteRenderer spriteRenderer { get; private set; }
+    private ItemGenerate itemGenerate;
     public Sprite[] states;
     public int health {  get; private set; }
 
@@ -14,16 +16,16 @@ public class Brick : MonoBehaviour, Icollidable
     private void Awake()
     {
         this.spriteRenderer = GetComponent<SpriteRenderer>();
+        itemGenerate = GetComponent<ItemGenerate>();
     }
 
     private void Start()
     {
         if (!this.unbreakable)
         {
-            this.health = this.states.Length;
+            this.health = 1;
             this.spriteRenderer.sprite = this.states[this.health - 1];
         }
-        
     }
 
     private void Hit()
@@ -36,6 +38,8 @@ public class Brick : MonoBehaviour, Icollidable
 
         if (this.health <= 0)
         {
+            GameManager.instance.NotifyBlockBreakEvent();
+            itemGenerate.ItemCreate();
             this.gameObject.SetActive(false);
         }
         else

@@ -12,7 +12,7 @@ public class ItemGenerate : MonoBehaviour //블럭 프리팹에 붙일 것
     {
         itemCount=Item.Count;
     }
-    void ItemCreate()
+    public void ItemCreate()
     {
         int random = Random.Range(0, 100);
 
