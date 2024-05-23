@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour
     private List<GameObject> ballList;
     private List<GameObject> brickList;
 
-    public int Score { get; private set; }
-
     private void Awake()
     {
         if(instance == null) 
@@ -48,13 +46,12 @@ public class GameManager : MonoBehaviour
     {
         blockCount = data.bricksNum;
         ballCount = 0;
-        Score = dataManager.BestScore;
     }
 
     public void blockDestroy()
     {
         blockCount--;
-        Score += 10;
+        DataManager.instance.nowScore += 10;
         if (blockCount <= 0) GameClear();
     }
 
