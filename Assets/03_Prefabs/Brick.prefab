@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - {fileID: 21300000, guid: f6bb7186c90ac5c4386779a782d64cfb, type: 3}
+  - {fileID: 21300000, guid: 0c3c916b3b4c72547a05a133343ba3ff, type: 3}
   unbreakable: 0
 --- !u!114 &8456865490134971012
 MonoBehaviour:
@@ -162,4 +163,4 @@ MonoBehaviour:
   Item:
   - {fileID: 8861637907921895168, guid: f99cc6e8773ebf94192a17b1997180a8, type: 3}
   - {fileID: 5478517413285199390, guid: 4c79fa6098a2ea84693942c9305b6960, type: 3}
-  probability: 100
+  probability: 30
