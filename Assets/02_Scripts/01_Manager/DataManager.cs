@@ -26,7 +26,9 @@ public class DataManager : MonoBehaviour
 
     //현재 레벨
     public GameLevel level;
-    public int BestScore;
+    public int nowScore;
+    public int lastScore;
+    public int bestScore;
 
     private void Awake()
     {
@@ -61,6 +63,7 @@ public class DataManager : MonoBehaviour
     public void StartGame()
     {
         SetLevelData();
+        nowScore = lastScore;
         SceneManager.LoadScene(StartSceneName);
         //StartCoroutine(GameManagerSpawn());
     }

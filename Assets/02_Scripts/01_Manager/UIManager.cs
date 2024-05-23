@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
     public void Open(GameState gameState)
     {
-        int nowScore = GameManager.instance.Score;
+        int nowScore = DataManager.instance.nowScore;
 
         if (gameState == GameState.GAME_CLAER)
         {
@@ -38,11 +38,12 @@ public class UIManager : MonoBehaviour
             TextMeshProUGUI clearGameScoreText = ClearGameScore.GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI clearBestScoreText = ClearBestScore.GetComponent<TextMeshProUGUI>();
             clearGameScoreText.text = nowScore.ToString();
-            if (nowScore > int.Parse(clearBestScoreText.text))
+            if (nowScore > DataManager.instance.bestScore)
             {
-                clearBestScoreText.text = nowScore.ToString();
-                DataManager.instance.BestScore += nowScore;
+                DataManager.instance.bestScore = nowScore;
             }
+            clearBestScoreText.text = DataManager.instance.bestScore.ToString();
+            DataManager.instance.lastScore = nowScore;
         }
         else if (gameState == GameState.GAME_OVER)
         {
@@ -50,11 +51,12 @@ public class UIManager : MonoBehaviour
             TextMeshProUGUI endGameScoreText = EndGameScore.GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI endGameBestText = EndBestScore.GetComponent<TextMeshProUGUI>();
             endGameScoreText.text = nowScore.ToString();
-            if (nowScore > int.Parse(endGameBestText.text))
+            if (nowScore > DataManager.instance.bestScore)
             {
-                endGameBestText.text = nowScore.ToString();
+                DataManager.instance.bestScore = nowScore;
             }
-            DataManager.instance.BestScore = 0;
+            endGameBestText.text = DataManager.instance.bestScore.ToString();
+            DataManager.instance.lastScore = 0;
         }
     }
 
