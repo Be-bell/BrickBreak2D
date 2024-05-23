@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352448234980026583}
   - component: {fileID: 5701705098560974098}
+  - component: {fileID: -4633064817397640684}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,7 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d13d592e14a92940b59bfba736ac2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objPool: {fileID: 0}
   ballTag: Ball
   brickTag: 
   nowState: 0
+--- !u!114 &-4633064817397640684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916933292614208232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25bf788d8ad90704587c8b3d5e532868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameClearPanel: {fileID: 8450195725995887043, guid: 71ce0b4fee2ee1c42bcd1f931289a0ba, type: 3}
+  GameOverPanel: {fileID: 623922926037849134, guid: 555ab21d25a64aa4cb94047fbff79391, type: 3}

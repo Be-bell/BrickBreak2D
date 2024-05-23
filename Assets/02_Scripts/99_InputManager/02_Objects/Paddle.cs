@@ -14,6 +14,11 @@ public class Paddle : MonoBehaviour
         inputController.onMoveEvent += GetMove;
     }
 
+    private void Start()
+    {
+        gameObject.transform.localScale = new Vector3((float) DataManager.instance.currentLevelData.paddleSize, 0.2f, 1);
+    }
+
     private void GetMove(float value)
     {
         xMove = value;
@@ -27,15 +32,16 @@ public class Paddle : MonoBehaviour
     private void Move()
     {
         // speed는 나중에 다시 구현할 것.
-        rb2d.velocity = new Vector2(xMove, 0) * Time.deltaTime * 500;
+        rb2d.velocity = Vector2.right * xMove * Time.deltaTime * 500;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var nall = collision.gameObject.GetComponent<Icollidable>();
-        if(nall !=null )
+        if (nall != null)
         {
             nall.OnCollide(this.gameObject);
         }
     }
-   
+
 }

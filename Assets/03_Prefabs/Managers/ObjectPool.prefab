@@ -48,3 +48,6 @@ MonoBehaviour:
   - objTag: Ball
     prefab: {fileID: 3102437994274858251, guid: fce98b6787b1f0144a4aaddd7a7019e1, type: 3}
     size: 50
+  - objTag: Bricks
+    prefab: {fileID: 7249722641304076138, guid: a9cd31196e178da4285ceab89a9e07a8, type: 3}
+    size: 70

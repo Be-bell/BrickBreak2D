@@ -1,21 +1,17 @@
 using UnityEngine;
 
-public class BackWall : MonoBehaviour
+public class BackWall : MonoBehaviour, Icollidable
 {
-    [SerializeField] private LayerMask ballLayer;
+    [SerializeField] private GameManager gameManager;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnEnable()
     {
-        // 레이어로 일치하는지 처리
-        if (IsLayerMatched(ballLayer.value, collision.gameObject.layer))
-        {
-            GameManager.instance.SubstractBallCount();
-            GameObject.Destroy(collision.gameObject);
-        }
+        gameManager = GameManager.instance;
     }
 
-    private bool IsLayerMatched(int layerMask, int objectLayer)
+    public void OnCollide(GameObject ball)
     {
-        return layerMask == (layerMask | (1 << objectLayer));
+        ball.SetActive(false);
+        gameManager.ballDestroy();
     }
 }

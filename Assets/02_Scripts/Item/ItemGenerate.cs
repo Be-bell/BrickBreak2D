@@ -12,14 +12,14 @@ public class ItemGenerate : MonoBehaviour //블럭 프리팹에 붙일 것
     {
         itemCount=Item.Count;
     }
-    void ItemCreate()
+    public void ItemCreate(Transform pos)
     {
         int random = Random.Range(0, 100);
 
         if (random < probability)
         {
             random = Random.Range(0, itemCount); //아이템들중 하나 자동 생성
-            Instantiate(Item[random]);
+            Instantiate(Item[random], pos.position, Quaternion.identity);
         }
     }
 

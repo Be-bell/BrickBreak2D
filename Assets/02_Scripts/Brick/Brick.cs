@@ -1,25 +1,29 @@
+using DG.Tweening.Core.Easing;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brick : MonoBehaviour
+public class Brick : MonoBehaviour, Icollidable
 {
     public SpriteRenderer spriteRenderer { get; private set; }
+    private ItemGenerate itemGenerate;
     public Sprite[] states;
-    public int health {  get; private set; }
+    public int health { get; private set; }
 
     public bool unbreakable;
 
     private void Awake()
     {
         this.spriteRenderer = GetComponent<SpriteRenderer>();
+        itemGenerate = GetComponent<ItemGenerate>();
     }
 
     private void Start()
     {
         if (!this.unbreakable)
         {
-            this.health = this.states.Length;
+            this.health = states.Length;
             this.spriteRenderer.sprite = this.states[this.health - 1];
         }
     }
@@ -34,6 +38,10 @@ public class Brick : MonoBehaviour
 
         if (this.health <= 0)
         {
+            GameManager.instance.blockDestroy();
+            itemGenerate.ItemCreate(this.transform);
+            this.health = states.Length;
+            this.spriteRenderer.sprite = states[this.health - 1];
             this.gameObject.SetActive(false);
         }
         else
@@ -41,12 +49,9 @@ public class Brick : MonoBehaviour
             this.spriteRenderer.sprite = this.states[this.health - 1];
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollide(GameObject Ball)
     {
-        if (collision.gameObject.name == "Ball")
-        {
-            Hit();
-        }
+       Hit();
     }
 }
 
