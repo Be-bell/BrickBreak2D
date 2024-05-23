@@ -14,19 +14,19 @@ public class DataManager : MonoBehaviour
     [SerializeField] private GameInformation gameInfo;
     private List<LevelData> levelDataList;
 
-    //데이터 전달 event
-    public event Action<GameState> GameManagerStart;
-    public event Action<GameState> ObjectPoolStart;
+    ////데이터 전달 event
+    //public event Action<GameState> GameManagerStart;
+    //public event Action<GameState> ObjectPoolStart;
 
-    [SerializeField] private GameObject wallObj;
-    [SerializeField] private string nextSceneName;
+    //[SerializeField] private GameObject wallObj;
+    [SerializeField] private string StartSceneName;
 
     //현재 레벨에 대한 데이터
     public LevelData currentLevelData { get; private set; }
 
     //현재 레벨
     public GameLevel level;
-
+    public int BestScore;
 
     private void Awake()
     {
@@ -53,6 +53,7 @@ public class DataManager : MonoBehaviour
             if (levelDataList[i].level == level)
                 currentLevelData = levelDataList[i];
         }
+        GameManager.instance.GameStart(GameState.GAME_START, currentLevelData);
     }
 
 
@@ -60,33 +61,34 @@ public class DataManager : MonoBehaviour
     public void StartGame()
     {
         SetLevelData();
-        StartCoroutine(GameManagerSpawn());
+        SceneManager.LoadScene(StartSceneName);
+        //StartCoroutine(GameManagerSpawn());
     }
 
-    private IEnumerator GameManagerSpawn()
-    {
-        AsyncOperation sceneOp = SceneManager.LoadSceneAsync(nextSceneName);
-        yield return sceneOp;
-        yield return new WaitUntil(SettingObjectPool);
-        yield return new WaitUntil(SettingGameManager);
-        yield return new WaitUntil(SettingWalls);
-    }
+    //private IEnumerator GameManagerSpawn()
+    //{
+    //    AsyncOperation sceneOp = SceneManager.LoadSceneAsync(nextSceneName);
+    //    yield return sceneOp;
+    //    yield return new WaitUntil(SettingObjectPool);
+    //    yield return new WaitUntil(SettingGameManager);
+    //    yield return new WaitUntil(SettingWalls);
+    //}
 
-    private bool SettingObjectPool()
-    {
-        ObjectPoolStart.Invoke(GameState.GAME_START);
-        return true;
-    }
+    //private bool SettingObjectPool()
+    //{
+    //    ObjectPoolStart.Invoke(GameState.GAME_START);
+    //    return true;
+    //}
 
-    private bool SettingGameManager()
-    {
-        GameManagerStart.Invoke(GameState.GAME_START);
-        return true;
-    }
+    //private bool SettingGameManager()
+    //{
+    //    GameManagerStart.Invoke(GameState.GAME_START);
+    //    return true;
+    //}
 
-    private bool SettingWalls()
-    {
-        Instantiate(wallObj);
-        return true;
-    }
+    //private bool SettingWalls()
+    //{
+    //    Instantiate(wallObj);
+    //    return true;
+    //}
 }

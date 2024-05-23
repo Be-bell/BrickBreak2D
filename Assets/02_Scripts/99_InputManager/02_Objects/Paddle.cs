@@ -14,6 +14,11 @@ public class Paddle : MonoBehaviour
         inputController.onMoveEvent += GetMove;
     }
 
+    private void Start()
+    {
+        gameObject.transform.localScale = new Vector3((float) DataManager.instance.currentLevelData.paddleSize, 0.2f, 1);
+    }
+
     private void GetMove(float value)
     {
         xMove = value;

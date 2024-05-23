@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    private DataManager dataManager;
     public static ObjectPool instance;
 
     [System.Serializable] 
@@ -30,32 +29,24 @@ public class ObjectPool : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        MakePool();
     }
 
-    private void OnEnable()
+    private void MakePool()
     {
-        dataManager = DataManager.instance;
-        dataManager.ObjectPoolStart += MakePool;
-    }
-
-    private void MakePool(GameState state)
-    {
-        if(state == GameState.GAME_START)
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        foreach (var pool in pools)
         {
-            poolDictionary = new Dictionary<string, Queue<GameObject>>();
-            foreach (var pool in pools)
+            Queue<GameObject> objPool = new Queue<GameObject>();
+            for (int i = 0; i < pool.size; i++)
             {
-                Queue<GameObject> objPool = new Queue<GameObject>();
-                for (int i = 0; i < pool.size; i++)
-                {
-                    GameObject obj = Instantiate(pool.prefab);
-                    obj.transform.parent = this.transform;
-                    obj.SetActive(false);
-                    objPool.Enqueue(obj);
-                }
-
-                poolDictionary.Add(pool.objTag, objPool);
+                GameObject obj = Instantiate(pool.prefab);
+                obj.transform.parent = this.transform;
+                obj.SetActive(false);
+                objPool.Enqueue(obj);
             }
+
+            poolDictionary.Add(pool.objTag, objPool);
         }
     }
 

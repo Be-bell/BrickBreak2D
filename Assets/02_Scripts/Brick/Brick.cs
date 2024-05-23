@@ -9,7 +9,7 @@ public class Brick : MonoBehaviour, Icollidable
     public SpriteRenderer spriteRenderer { get; private set; }
     private ItemGenerate itemGenerate;
     public Sprite[] states;
-    public int health {  get; private set; }
+    public int health { get; private set; }
 
     public bool unbreakable;
 
@@ -23,7 +23,7 @@ public class Brick : MonoBehaviour, Icollidable
     {
         if (!this.unbreakable)
         {
-            this.health = 1;
+            this.health = states.Length;
             this.spriteRenderer.sprite = this.states[this.health - 1];
         }
     }
@@ -38,8 +38,10 @@ public class Brick : MonoBehaviour, Icollidable
 
         if (this.health <= 0)
         {
-            GameManager.instance.NotifyBlockBreakEvent();
-            itemGenerate.ItemCreate();
+            GameManager.instance.blockDestroy();
+            itemGenerate.ItemCreate(this.transform);
+            this.health = states.Length;
+            this.spriteRenderer.sprite = states[this.health - 1];
             this.gameObject.SetActive(false);
         }
         else

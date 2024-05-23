@@ -13,3 +13,8 @@ public enum GameLevel
     NORMAL,
     HARD
 }
+public enum SceneNumber
+{
+    MAIN_SCENE,
+    START_SCENE,
+}
